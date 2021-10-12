@@ -1,6 +1,8 @@
 <?php
 
+use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,16 +16,23 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return "Página inicial";
 })-> name('inicio');
 
-Route::get('/admin',function(){
-    return "Vamos desenvolver aplicações com Laravel";
+Route:: get('/dashboard/tasks',function(){
+    return view('dashboard.home');
 });
 
-Route::get('/task',function(){
-    return view('home',['user' => 'Leandra']);
-    //return view('home',['user => 'Leandra]) passando uma informação para o template;
-    // no template a informação seria passada assim: 
-        // por exemplo <h1> Olá, {{$user}}</h1>
+Route:: get('/dashboard/tasks/create',function(){
+    return view('dashboard.create');
+});
+
+Route:: post('/dashboard/tasks/store',function(Request $request){
+    $tarefa = $request->post('task');
+    $descricao = $request->post('description');
+    return $tarefa . "---" . $descricao;
+})-> name('tasks.store');
+
+Route:: get('/dashboard/tasks/{id}/show', function($id){
+    return view('dashboard.show',['task_id' => $id]);
 });
