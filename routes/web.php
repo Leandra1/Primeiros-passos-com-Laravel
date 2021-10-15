@@ -3,6 +3,7 @@
 use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use App\Http\Controllers\TaskController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,20 +20,19 @@ Route::get('/', function () {
     return "Página inicial";
 })-> name('inicio');
 
-Route:: get('/dashboard/tasks',function(){
-    return view('dashboard.home');
-});
+// Registro de rotas individualmente
+/* Route:: get('/dashboard/tasks',[TaskController::class,'index']);
 
-Route:: get('/dashboard/tasks/create',function(){
-    return view('dashboard.create');
-});
+Route:: get('/dashboard/tasks/create',[TaskController::class,'create']);
 
-Route:: post('/dashboard/tasks/store',function(Request $request){
-    $tarefa = $request->post('task');
-    $descricao = $request->post('description');
-    return $tarefa . "---" . $descricao;
-})-> name('tasks.store');
+Route:: post('/dashboard/tasks/store',[TaskController::class,'store'])-> name('tasks.store');
 
-Route:: get('/dashboard/tasks/{id}/show', function($id){
-    return view('dashboard.show',['task_id' => $id]);
-});
+Route:: get('/dashboard/tasks/{id}/show', [TaskController:: class, 'show']); */
+
+
+// Registro de rotas por meio do Controller Resource
+
+//Route::resource('/painel',TaskController::class);
+Route::resource('/painel',TaskController::class)->except([
+    'destroy','update','edit'
+]);

@@ -8,12 +8,12 @@
 </head>
 <body>
     <div>
-        <p>
+      <!--  <p>
             {{$task_id}}
             @if($task_id)
             <h1>Leandra é um anjo!</h1>
             @endif
-        </p>
+        </p> !-->
+        <p> Tarefa {{$task_id}} </p>
     </div>
 </body>
-</html>

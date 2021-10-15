@@ -322,7 +322,7 @@
                     <!-- Content Row -->
                     <div class="row">
                         <div class="col">
-                           <form action="{{route('tasks.store')}}" class="user" method="POST">
+                           <form action="{{route('painel.store')}}" class="user" method="POST">
                                @csrf
                                 <div class="form-group">
                                    <label for="task">Tarefa</label>
