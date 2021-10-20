@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Tarefa;
 
 class TaskController extends Controller
 {
@@ -10,8 +11,9 @@ class TaskController extends Controller
 
     public function index(){
 
-        //como construir a view das tarefas 
-        return view('dashboard.home');
+        //recuperar todas as tarefas e mostrar ao usuário
+        $lista = Tarefa::all();
+        return view('dashboard.home',['tarefas'=>$lista]);
     }
 
     // retornar o formulário de criação de tarefas
@@ -23,15 +25,25 @@ class TaskController extends Controller
 
     public function store(Request $request){
 
-        $tarefa = $request->post('task');
-        $descricao = $request->post('description');
+        $tarefa = new Tarefa;
+        $tarefa->descricao = $request->post('description');
+        $tarefa->save();
 
-        return 'Tarefa: ' . $tarefa . '<br>' . 'Descrição: ' . $descricao;
+        //redireciona para a página normal
+        return redirect()->to(route('inicio'));
     }
 
     public function show($id){
 
-        return view('dashboard.show', ['task_id' => $id]);
+        $tarefa = Tarefa::find($id);
+        if($tarefa){
+
+            return view('dashboard.show',['tarefa'=>$tarefa]);
+        }
+        else {
+            return redirect()->to(route('inicio'));
+        }
+        
     }
 
 }

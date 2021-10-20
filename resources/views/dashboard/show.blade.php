@@ -7,13 +7,13 @@
     <title>Tarefa</title>
 </head>
 <body>
-    <div>
-      <!--  <p>
-            {{$task_id}}
-            @if($task_id)
-            <h1>Leandra é um anjo!</h1>
-            @endif
-        </p> !-->
-        <p> Tarefa {{$task_id}} </p>
+    <div class='row'>
+      <div class='col'>
+            <h1>Tarefa - {{$tarefa->id}} </h1>
+            <p>
+                Descrição: {{$tarefa->descricao}}
+            </p>
+      </div>
+        
     </div>
 </body>

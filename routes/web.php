@@ -16,19 +16,16 @@ use App\Http\Controllers\TaskController;
 |
 */
 
-Route::get('/', function () {
-    return "Página inicial";
-})-> name('inicio');
+Route::get('/',[TaskController::class,'index'])->name('inicio');
 
 // Registro de rotas individualmente
-/* Route:: get('/dashboard/tasks',[TaskController::class,'index']);
+ //Route:: get('/dashboard/tasks',[TaskController::class,'index']);
 
-Route:: get('/dashboard/tasks/create',[TaskController::class,'create']);
+Route:: get('/tasks/create',[TaskController::class,'create'])->name('create');
 
-Route:: post('/dashboard/tasks/store',[TaskController::class,'store'])-> name('tasks.store');
+Route:: post('/tasks/store',[TaskController::class,'store'])->name('store');
 
-Route:: get('/dashboard/tasks/{id}/show', [TaskController:: class, 'show']); */
-
+Route:: get('/tasks/{id}/show', [TaskController:: class, 'show'])->name('show');
 
 // Registro de rotas por meio do Controller Resource
 

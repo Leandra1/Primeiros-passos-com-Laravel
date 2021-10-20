@@ -322,13 +322,9 @@
                     <!-- Content Row -->
                     <div class="row">
                         <div class="col">
-                           <form action="{{route('painel.store')}}" class="user" method="POST">
+                           <form action="{{route('store')}}" class="user" method="POST">
                                @csrf
-                                <div class="form-group">
-                                   <label for="task">Tarefa</label>
-                                   <input type="text" class="form-control" id="task" name="task">
-                                </div>
-
+          
                                 <div class="form-group">
                                     <label for="description">Descrição</label>
                                     <input type="text" class="form-control" id="description" name="description">

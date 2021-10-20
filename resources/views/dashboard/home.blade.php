@@ -315,14 +315,19 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                        <a href="{{route('create')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"> Adicionar Tarefa</a>
                     </div>
 
                     <!-- Content Row -->
                     <div class="row">
                         <div class="col">
-                            <p>Página Home do Projeto</p>
+                        @foreach ($tarefas as $tarefa)
+                            <p>
+                                <label>{{$tarefa->id}} - </label>
+                               <label>{{$tarefa->descricao}}: </label> 
+                               <a href="{{route('show',['id'=>$tarefa->id])}}">Mostrar</a>
+                            </p>
+                        @endforeach
                         </div>                
                     </div>
 
